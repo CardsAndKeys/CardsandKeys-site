@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardsandKeys | Elite Travel Concierge</title>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #000000;
+            --text: #ffffff;
+            --gold: #D4AF37; 
+            --card-bg: #111111;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid #111;
+        }
+
+        .logo {
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            margin-left: 20px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+
+        /* Hero Video */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: 0.5;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 12vw, 7rem);
+            font-weight: 200;
+            letter-spacing: 20px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        /* Services Grid */
+        .services-section { padding: 8rem 5%; background: #000; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            overflow: hidden;
+            border: 1px solid #1a1a1a;
+            position: relative;
+        }
+
+        .card-img {
+            height: 500px;
+            width: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) brightness(70%);
+            transition: 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        }
+
+        .card:hover .card-img { filter: grayscale(0%) brightness(100%); transform: scale(1.05); }
+
+        .card-content { 
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            text-align: left;
+        }
+
+        .card-content h3 { 
+            color: var(--gold); 
+            letter-spacing: 4px; 
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+
+        /* Book Yourself (Linktree Section) */
+        .book-yourself-section {
+            padding: 10rem 5%;
+            text-align: center;
+            background: #050505;
+        }
+
+        .by-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            padding: 60px 0;
+        }
+
+        .by-btn {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 20px 50px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: 0.5s;
+        }
+
+        .by-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px rgba(212, 175, 55, 0.3); }
+
+        /* WhatsApp Contact */
+        .contact-cta {
+            padding: 10rem 5%;
+            text-align: center;
+            background: var(--gold);
+            color: #000;
+        }
+
+        .wa-link {
+            font-size: clamp(1.5rem, 6vw, 4rem);
+            font-weight: 900;
+            text-decoration: none;
+            color: #000;
+            display: block;
+            margin: 1.5rem 0;
+            letter-spacing: -1px;
+        }
+
+        footer {
+            padding: 4rem;
+            text-align: center;
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            color: #333;
+            background: #000;
+        }
+
+        /* Smooth Scroll behavior */
+        html { scroll-behavior: smooth; }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">Cards&Keys</a>
+        <div class="nav-links">
+            <a href="#services">Experiences</a>
+            <a href="#book-yourself">Book On Your Own</a>
+            <a href="#contact">WhatsApp</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <video autoplay muted loop playsinline class="video-bg">
+            <source src="https://assets.mixkit.co/videos/5371/5371-720.mp4" type="video/mp4">
+        </video>
+        <h1 data-aos="fade-down" data-aos-duration="1500">CARDS & KEYS</h1>
+        <p data-aos="fade-up" data-aos-delay="400" style="letter-spacing: 8px; font-weight: 300; opacity: 0.8;">BESPOKE WORLDWIDE TRAVEL</p>
+    </header>
+
+    <section id="services" class="services-section">
+        <div class="grid">
+            <div class="card" data-aos="fade-up">
+                <img src="https://img.freepik.com/free-photo/type-entertainment-complex-popular-resort-with-pools-water-parks-turkey-with-more-than-5-million-visitors-year-amara-dolce-vita-luxury-hotel-resort-tekirova-kemer_146671-18728.jpg?semt=ais_rp_50_assets&w=740&q=80" alt="Hotels" class="card-img">
+                <div class="card-content">
+                    <h3>Hotels</h3>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=800&q=80" alt="Packages" class="card-img">
+                <div class="card-content">
+                    <h3>Packages</h3>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="400">
+                <img src="https://media.gettyimages.com/id/2207102763/video/flying-above-tropical-island-paradise-with-airplane-wing-in-foreground-and-breathtaking.avif?s=640x640&k=20&c=6YR_Pzdd9p-SXqa3yM9-SE5-l1bb4jeU7XMX9ylAYQo=" alt="Flights" class="card-img">
+                <div class="card-content">
+                    <h3>Flights</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="contact" class="contact-cta">
+        <div data-aos="zoom-in">
+            <p style="text-transform: uppercase; letter-spacing: 4px; font-weight: 700; font-size: 0.7rem;">Immediate Inquiries</p>
+            <a href="https://wa.me/919826364282?text=Hello%20I'm%20interested%20in%20travel%20booking" class="wa-link">+91 9826364282</a>
+            <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.6;">Click the number to redirect to whatsapp</p>
+        </div>
+    </section>
+
+    <section id="book-on-your-own" class="book-yourself-section">
+        <div class="by-container" data-aos="fade-in">
+            <h2 style="letter-spacing: 8px; font-weight: 200; font-size: 2rem;">BOOK ON YOUR OWN</h2>
+            <p style="margin-top: 2rem; color: #666; font-size: 0.9rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Prefer to take the lead? Access our partner portals and exclusive booking links directly through our digital directory.
+            </p>
+            <a href="https://linktr.ee/Cardsandkeys" class="by-btn" target="_blank">GO TO LINKTREE</a>
+        </div>
+    </section>
+
+
+    <footer>
+        &copy; 2026 CARDSANDKEYS LUXURY TRAVEL GROUP. ALL RIGHTS RESERVED.
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200,
+            once: false,
+        });
+    </script>
+</body>
+</html>
