@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardsandKeys | Boutique Travel Concierge</title>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #000000;
+            --text: #ffffff;
+            --gold: #D4AF37; 
+            --card-bg: #111111;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation - Optimized for all screens */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .logo {
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            margin-left: 15px;
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+
+        /* Hero Section - Mobile Fixed */
+        .hero {
+            height: 100vh;
+            height: 100dvh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 0 5%;
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: 0.6;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 10vw, 6rem);
+            font-weight: 200;
+            letter-spacing: clamp(10px, 4vw, 20px);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        /* Services Grid - Removed Grayscale & Added Stacking */
+        .services-section { padding: 5rem 5%; background: #000; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Stacked for mobile */
+            gap: 25px;
+        }
+
+        /* Desktop Grid Override */
+        @media (min-width: 768px) {
+            .grid { grid-template-columns: repeat(3, 1fr); }
+            .services-section { padding: 8rem 5%; }
+            .nav-links a { font-size: 0.75rem; margin-left: 25px; }
+        }
+
+        .card {
+            background: var(--card-bg);
+            overflow: hidden;
+            border: 1px solid #1a1a1a;
+            position: relative;
+            transition: 0.4s ease;
+        }
+
+        .card:hover { border-color: var(--gold); transform: scale(1.02); }
+
+        .card-img {
+            height: 400px;
+            width: 100%;
+            object-fit: cover;
+            /* REMOVED GRAYSCALE */
+            filter: brightness(80%); 
+            transition: 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        }
+
+        .card:hover .card-img { filter: brightness(105%); transform: scale(1.1); }
+
+        .card-content { 
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            text-align: left;
+        }
+
+        .card-content h3 { 
+            color: var(--gold); 
+            letter-spacing: 3px; 
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+
+        /* Book Yourself - Mobile Optimized */
+        .book-yourself-section {
+            padding: 6rem 5%;
+            text-align: center;
+            background: #050505;
+        }
+
+        .by-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            padding: 50px 10px;
+        }
+
+        .by-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 18px 40px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 3px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            transition: 0.5s;
+        }
+
+        .by-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+
+        /* WhatsApp Contact Section - Mobile Optimized */
+        .contact-cta {
+            padding: 6rem 5%;
+            text-align: center;
+            background: var(--gold);
+            color: #000;
+        }
+
+        .wa-link {
+            font-size: clamp(1.2rem, 8vw, 3.5rem);
+            font-weight: 900;
+            text-decoration: none;
+            color: #000;
+            display: block;
+            margin: 1rem 0;
+            letter-spacing: -0.5px;
+            transition: 0.3s;
+        }
+
+        .wa-link:hover { opacity: 0.7; transform: translateY(-3px); }
+
+        footer {
+            padding: 3rem;
+            text-align: center;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: #444;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">Cards&Keys</a>
+        <div class="nav-links">
+            <a href="#services">Experiences</a>
+            <a href="#book-yourself">Book On Your Own</a>
+            <a href="#contact">WhatsApp</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <video autoplay muted loop playsinline class="video-bg">
+            <source src="https://www.pexels.com/download/video/1806140/" type="video/mp4">
+        </video>
+        <h1 data-aos="fade-down" data-aos-duration="1500">CARDS & KEYS</h1>
+        <p data-aos="fade-up" data-aos-delay="500" style="letter-spacing: 5px; font-weight: 300; opacity: 0.8; font-size: 0.8rem;">BESPOKE WORLDWIDE TRAVEL</p>
+    </header>
+
+    <section id="services" class="services-section">
+        <div class="grid">
+            <div class="card" data-aos="fade-up">
+                <img src="https://w0.peakpx.com/wallpaper/235/390/HD-wallpaper-amazing-luxury-luxury-hotel-beach-resort-luxurious-beach-luxurious-hotel-luxury-luxurious.jpg" alt="Hotels" class="card-img">
+                <div class="card-content">
+                    <h3>Hotels</h3>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=800&q=80" alt="Packages" class="card-img">
+                <div class="card-content">
+                    <h3>Packages</h3>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="400">
+                <img src="https://media.gettyimages.com/id/2207102763/video/flying-above-tropical-island-paradise-with-airplane-wing-in-foreground-and-breathtaking.avif?s=640x640&k=20&c=6YR_Pzdd9p-SXqa3yM9-SE5-l1bb4jeU7XMX9ylAYQo=" alt="Flights" class="card-img">
+                <div class="card-content">
+                    <h3>Flights</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="contact-cta">
+        <div data-aos="fade-up">
+            <p style="text-transform: uppercase; letter-spacing: 3px; font-weight: 700; font-size: 0.65rem;">Immediate Inquiries</p>
+            <a href="https://wa.me/919826364282?text=Hello%20I'm%20interested%20in%20travel%20booking" class="wa-link">+91 9826364282</a>
+            <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7;">Click to Chat via WhatsApp</p>
+        </div>
+    </section>
+
+    <section id="book-yourself" class="book-yourself-section">
+        <div class="by-container" data-aos="zoom-in" data-aos-duration="1000">
+            <h2 style="letter-spacing: 6px; font-weight: 200; font-size: 1.8rem;">BOOK ON YOUR OWN</h2>
+            <p style="margin-top: 1.5rem; color: #666; font-size: 0.85rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+                Explore our digital directory for direct booking links and exclusive partner access.
+            </p>
+            <a href="https://linktr.ee/Cardsandkeys" class="by-btn" target="_blank">OPEN LINKTREE</a>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 CARDSANDKEYS LUXURY TRAVEL GROUP.
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200,
+            once: false,
+            mirror: true
+        });
+    </script>
+</body>
+</html>
